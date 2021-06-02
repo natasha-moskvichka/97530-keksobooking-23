@@ -1,16 +1,18 @@
 // Функция, возвращающая случайное число
 const getRandomInteger = function (min, max) {
-  return (min >= 0 && max >= 0) ? Math.floor(Math.random() * (max - min + 1) + min) : null;
+  if (min >= 0 && max >= 0) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  } return null;
 };
-getRandomInteger(12, 3);
+getRandomInteger(-4, 56);
 
 // Функция, возвращающая случайное число с плавающей точкой
-const getRandomFloat = function (min, max, num) {
+const getRandomFloat = function (min, max, digit) {
   if (min < 0 || max < 0) {
     return null;
   } else {
-    const randomNum =  Math.random() * (max - min) + min;
-    return +randomNum.toFixed(num);
+    const randomDigit = Math.random() * (max - min) + min;
+    return randomDigit.toFixed(digit);
   }
 };
-getRandomFloat(1.1, 5.2, 3);
+getRandomFloat(1.2, 10.3, 2);
