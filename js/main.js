@@ -12,8 +12,8 @@ const getRandomFloat = function (min, max, digit) {
   if (min < 0 || max < 0) {
     return null;
   } else {
-    const randomDigit = Math.random() * (max - min) + min;
-    return randomDigit.toFixed(digit);
+    const randomNum = Math.random() * (max - min) + min;
+    return randomNum.toFixed(digit);
   }
 };
 getRandomFloat(1.2, 10.3, 2);
