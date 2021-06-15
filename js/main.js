@@ -20,7 +20,7 @@ const ADDRESS_LOCATION_X = 60;
 
 const ADDRESS_LOCATION_Y = 590;
 
-const PRICES = {
+const Price = {
   PRICE_MIN: 500,
   PRICE_MAX: 5000,
 };
@@ -78,7 +78,7 @@ const createRandomString = function (arr, length) {
   for (let i = 0; i < length; i += 1) {
     newArr.push(FEATURES[i]);
   }
-  return newArr.join(', ');
+  return newArr;
 };
 
 // Функция, генерирующая массив из объектов
@@ -90,7 +90,7 @@ const createAd = function () {
     offer: {
       title: 'Домик у моря',
       address: `${getRandomPositiveInteger(ADDRESS_LOCATION_X, ADDRESS_LOCATION_Y)} ${getRandomPositiveInteger(ADDRESS_LOCATION_X, ADDRESS_LOCATION_Y)}`,
-      price: getRandomPositiveInteger(PRICES.PRICE_MIN, PRICES.PRICE_MAX),
+      price: getRandomPositiveInteger(Price.PRICE_MIN, Price.PRICE_MAX),
       type: getRandomArrayElement(TYPES),
       rooms: getRandomPositiveInteger(ROOMS.ROOM_MIN, ROOMS.ROOM_MAX),
       guests: getRandomPositiveInteger(GUESTS.GUESTS_MIN, GUESTS.GUESTS_MAX),
@@ -109,3 +109,4 @@ const createAd = function () {
 
 // КОММЕНТ ДЛЯ НАСТАВНИКА ПОСЛЕ КОНСУЛЬТАЦИИ - ОШИБКА ПЕРЕМЕННОЙ similarAds, которая представляет из себя массив с данными, но не используется пока
 const similarAds = new Array(SIMILAR_AD_COUNT).fill(null).map(() => createAd());
+console.log(similarAds);
