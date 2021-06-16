@@ -1,2 +1,2 @@
-import { getRandomPositiveInteger, getRandomPositiveFloat, getRandomArrayElement, createRandomString } from './util.js';
-
+import './util.js';
+import './data.js';
