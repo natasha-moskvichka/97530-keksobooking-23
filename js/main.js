@@ -1,5 +1,3 @@
-const AUTHORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
 const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 
 const CHECKIN = ['12:00', '13:00', '14:00'];
@@ -18,19 +16,24 @@ const ADDRESS_LOCATION_X = 60;
 
 const ADDRESS_LOCATION_Y = 590;
 
+const Authors = {
+  MIN: 1,
+  MAX: 10,
+};
+
 const Prices = {
-  PRICE_MIN: 500,
-  PRICE_MAX: 5000,
+  MIN: 500,
+  MAX: 5000,
 };
 
 const Rooms = {
-  ROOM_MIN: 1,
-  ROOM_MAX: 10,
+  MIN: 1,
+  MAX: 10,
 };
 
 const Guests = {
-  GUESTS_MIN: 1,
-  GUESTS_MAX: 10,
+  MIN: 1,
+  MAX: 10,
 };
 
 const LocationX = {
@@ -63,7 +66,7 @@ const getRandomPositiveFloat = function (a, b, digits = 1) {
   return result.toFixed(digits);
 };
 
-// Функция, возвращаяющая рандомный элемент
+// Функция, возвращающая рандомный элемент
 const getRandomArrayElement = function (elements) {
   return elements[getRandomPositiveInteger(0, elements.length - 1)];
 };
@@ -71,35 +74,40 @@ const getRandomArrayElement = function (elements) {
 // Функция, возвращает массив рандомной длины
 const getRandomArrayLength = function (arr, length) {
   const newArr = [];
+
   for (let i = 0; i < length; i += 1) {
     newArr.push(FEATURES[i]);
   }
+
   return newArr;
+
 };
 
-// Функция, создающая строку с рандомным значением
-const getRandomConcatString = function () {
-  const newString = getRandomArrayElement(AUTHORS);
-  if (newString < AUTHORS.length) {
-    return `img/avatars/user0${newString}.png`;
-  } else if (newString >= AUTHORS.length) {
-    return `img/avatars/user${newString}.png`;
+// Функция, создающая аватар пользователя
+const getPathOfAuthorsAvatar = function (elem) {
+
+  if (elem === Authors.MAX - 1) {
+    return elem + 1;
   }
+
+  return `0${elem + 1}`;
+
 };
 
 // Функция, генерирующая массив из объектов
-const createAd = function () {
+const createAd = function (result) {
+
   return {
     author: {
-      avatar: getRandomConcatString(AUTHORS),
+      avatar: `img/avatar${getPathOfAuthorsAvatar(result)}.png`,
     },
     offer: {
       title: 'Домик у моря',
       address: `${getRandomPositiveInteger(ADDRESS_LOCATION_X, ADDRESS_LOCATION_Y)} ${getRandomPositiveInteger(ADDRESS_LOCATION_X, ADDRESS_LOCATION_Y)}`,
-      price: getRandomPositiveInteger(Prices.PRICE_MIN, Prices.PRICE_MAX),
+      price: getRandomPositiveInteger(Prices.MIN, Prices.MAX),
       type: getRandomArrayElement(TYPES),
-      rooms: getRandomPositiveInteger(Rooms.ROOM_MIN, Rooms.ROOM_MAX),
-      guests: getRandomPositiveInteger(Guests.GUESTS_MIN, Guests.GUESTS_MAX),
+      rooms: getRandomPositiveInteger(Rooms.MIN, Rooms.MAX),
+      guests: getRandomPositiveInteger(Guests.MIN, Guests.MAX),
       checkin: getRandomArrayElement(CHECKIN),
       checkout: getRandomArrayElement(CHECKOUT),
       features: getRandomArrayLength(FEATURES, (getRandomPositiveInteger(0, FEATURES.length - 1))),
@@ -114,6 +122,6 @@ const createAd = function () {
 };
 
 // КОММЕНТ ДЛЯ НАСТАВНИКА ПОСЛЕ КОНСУЛЬТАЦИИ - ОШИБКА ПЕРЕМЕННОЙ similarAds, которая представляет из себя массив с данными, но не используется пока
-const similarAds = new Array(SIMILAR_AD_COUNT).fill(null).map(() => createAd());
+const similarAds = new Array(SIMILAR_AD_COUNT).fill(null).map((element, index) => createAd(index));
 console.log(similarAds);
 
