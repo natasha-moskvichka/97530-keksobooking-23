@@ -100,6 +100,5 @@ const createAd = function (result) {
   };
 };
 
-// КОММЕНТ ДЛЯ НАСТАВНИКА ПОСЛЕ КОНСУЛЬТАЦИИ - ОШИБКА ПЕРЕМЕННОЙ similarAds, которая представляет из себя массив с данными, но не используется пока
 const similarAds = new Array(SIMILAR_AD_COUNT).fill(null).map((element, index) => createAd(index));
-console.log(similarAds);
+export { similarAds };
