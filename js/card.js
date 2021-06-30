@@ -38,7 +38,7 @@ const generateAds = (ads) => {
     generateFeature(adsElement.querySelector('.popup__features'), ad.offer.features);
     adsElement.querySelector('.popup__description').textContent = ad.offer.description;
     adsElement.querySelector('.popup__photos img').src = ad.offer.photos;
-    adsElement.querySelector('.popup__avatar img').src = ad.author.avatar;
+    adsElement.querySelectorAll('.popup__avatar img').src = ad.author.avatar;
     adsFragment.appendChild(adsElement);
   });
 
