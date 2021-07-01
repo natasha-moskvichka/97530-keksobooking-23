@@ -1,4 +1,4 @@
-import {getRandomPositiveInteger, getRandomPositiveFloat, getRandomArrayElement} from './util.js';
+import {getRandomPositiveInteger, getRandomPositiveFloat, getRandomArrayElement } from './util.js';
 
 const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 
@@ -101,4 +101,4 @@ const createAd = function (result) {
 };
 
 const similarAds = new Array(SIMILAR_AD_COUNT).fill(null).map((element, index) => createAd(index));
-export { similarAds };
+export { similarAds, getPathOfAuthorsAvatar };
