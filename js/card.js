@@ -13,12 +13,18 @@ const card = document.querySelector('#card-canvas');
 const cardTemplate = document.querySelector('#card')
   .content.querySelector('.popup');
 
+const imgTemplate = cardTemplate.querySelector('img');
+
+const generatePhoto = function (elem) {
+  imgTemplate.src = `${elem}`;
+};
+
 const generateFeature = function (elem, arr) {
   elem.innerHTML = '';
 
   for (const item of arr) {
     const itemFeature = document.createElement('li');
-    itemFeature.classList.add('popup__features', `popup__features--${item}`);
+    itemFeature.classList.add('popup__feature', `popup__feature--${item}`);
     elem.appendChild(itemFeature);
   }
 };
@@ -38,7 +44,8 @@ const generateAds = (ads) => {
     generateFeature(adsElement.querySelector('.popup__features'), ad.offer.features);
     adsElement.querySelector('.popup__description').textContent = ad.offer.description;
     adsElement.querySelector('.popup__photos img').src = ad.offer.photos;
-    adsElement.querySelectorAll('.popup__avatar img').src = ad.author.avatar;
+    generatePhoto(adsElement.querySelectorAll('.popup__avatar').src = ad.author.avatar);
+
     adsFragment.appendChild(adsElement);
   });
 

@@ -78,8 +78,9 @@ const createAd = function (result) {
 
   return {
     author: {
-      avatar: `img/avatar${getPathOfAuthorsAvatar(result)}.png`,
+      avatar: `img/avatars/user${getPathOfAuthorsAvatar(result)}.png`,
     },
+
     offer: {
       title: 'Домик у моря',
       address: `${getRandomPositiveInteger(ADDRESS_LOCATION_X, ADDRESS_LOCATION_Y)} ${getRandomPositiveInteger(ADDRESS_LOCATION_X, ADDRESS_LOCATION_Y)}`,
