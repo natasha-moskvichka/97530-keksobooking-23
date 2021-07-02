@@ -11,12 +11,6 @@ const typeOfHousing = {
 const cardTemplate = document.querySelector('#card')
   .content.querySelector('.popup');
 
-const imgTemplate = cardTemplate.querySelector('img');
-
-const generatePhoto = function (url) {
-  imgTemplate.src = url;
-};
-
 const generateFeature = function (elem, arr) {
   elem.innerHTML = '';
 
@@ -44,8 +38,7 @@ const createSimilarAds = function (ads) {
 
     adsElement.querySelector('.popup__description').textContent = ad.offer.description;
     adsElement.querySelector('.popup__photos img').src = ad.offer.photos;
-
-    generatePhoto(adsElement.querySelector('.popup__avatar').src = ad.author.avatar);
+    adsElement.querySelector('.popup__avatar').src = ad.author.avatar;
 
     adsFragment.appendChild(adsElement);
   });
