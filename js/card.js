@@ -1,6 +1,6 @@
-import { similarAds } from './data.js';
+import {similarAds} from './data.js';
 
-const TYPES = {
+const typeOfHousing = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
   house: 'Дом',
@@ -8,15 +8,13 @@ const TYPES = {
   hotel: 'Отель',
 };
 
-const card = document.querySelector('#card-canvas');
-
 const cardTemplate = document.querySelector('#card')
   .content.querySelector('.popup');
 
 const imgTemplate = cardTemplate.querySelector('img');
 
-const generatePhoto = function (elem) {
-  imgTemplate.src = `${elem}`;
+const generatePhoto = function (url) {
+  imgTemplate.src = url;
 };
 
 const generateFeature = function (elem, arr) {
@@ -29,7 +27,7 @@ const generateFeature = function (elem, arr) {
   }
 };
 
-const generateAds = (ads) => {
+const createSimilarAds = function (ads) {
   const adsFragment = document.createDocumentFragment();
 
   ads.forEach((ad) => {
@@ -38,21 +36,19 @@ const generateAds = (ads) => {
     adsElement.querySelector('.popup__title').textContent = ad.offer.title;
     adsElement.querySelector('.popup__text--address').textContent = ad.offer.address;
     adsElement.querySelector('.popup__text--price').textContent = `${ad.offer.price} ₽/ночь`;
-    adsElement.querySelector('.popup__type').textContent = TYPES[ad.offer.type];
+    adsElement.querySelector('.popup__type').textContent = typeOfHousing[ad.offer.type];
     adsElement.querySelector('.popup__text--capacity').textContent = `${ad.offer.rooms} комнаты для ${ad.offer.guests} гостей`;
     adsElement.querySelector('.popup__text--time').textContent = `Заезд после ${ad.offer.checkin}, выезд до ${ad.offer.checkout}`;
+
     generateFeature(adsElement.querySelector('.popup__features'), ad.offer.features);
+
     adsElement.querySelector('.popup__description').textContent = ad.offer.description;
     adsElement.querySelector('.popup__photos img').src = ad.offer.photos;
-    generatePhoto(adsElement.querySelectorAll('.popup__avatar').src = ad.author.avatar);
+
+    generatePhoto(adsElement.querySelector('.popup__avatar').src = ad.author.avatar);
 
     adsFragment.appendChild(adsElement);
   });
-
-  card.appendChild(adsFragment);
-
-  return adsFragment;
 };
 
-generateAds(similarAds);
-export { generateAds };
+createSimilarAds(similarAds);

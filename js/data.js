@@ -102,4 +102,4 @@ const createAd = function (result) {
 };
 
 const similarAds = new Array(SIMILAR_AD_COUNT).fill(null).map((element, index) => createAd(index));
-export { similarAds, getPathOfAuthorsAvatar };
+export { similarAds };

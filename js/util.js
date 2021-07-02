@@ -18,7 +18,7 @@ const getRandomPositiveFloat = function (a, b, digits = 1) {
   return result.toFixed(digits);
 };
 
-// Функция, возвращаяющая рандомный элемент
+// Функция, возвращающая рандомный элемент
 const getRandomArrayElement = function (elements) {
   return elements[getRandomPositiveInteger(0, elements.length - 1)];
 };
