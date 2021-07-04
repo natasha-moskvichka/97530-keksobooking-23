@@ -12,7 +12,7 @@ const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/ke
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 
-const SIMILAR_AD_COUNT = 10;
+const SIMILAR_AD_COUNT = 1;
 
 const ADDRESS_LOCATION_X = 60;
 
@@ -78,8 +78,9 @@ const createAd = function (result) {
 
   return {
     author: {
-      avatar: `img/avatar${getPathOfAuthorsAvatar(result)}.png`,
+      avatar: `img/avatars/user${getPathOfAuthorsAvatar(result)}.png`,
     },
+
     offer: {
       title: 'Домик у моря',
       address: `${getRandomPositiveInteger(ADDRESS_LOCATION_X, ADDRESS_LOCATION_Y)} ${getRandomPositiveInteger(ADDRESS_LOCATION_X, ADDRESS_LOCATION_Y)}`,
@@ -101,4 +102,4 @@ const createAd = function (result) {
 };
 
 const similarAds = new Array(SIMILAR_AD_COUNT).fill(null).map((element, index) => createAd(index));
-export { similarAds };
+export {similarAds};
