@@ -1,58 +1,20 @@
-const getAdForm = function () {
-  return document.querySelector('.ad-form');
-};
+const mainForm = document.querySelector('.ad-form');
+const mainFilter = document.querySelector('.map__filters');
 
-const getMapFiltersForm = function () {
-  return document.querySelector('.map__filters');
-};
+const childrenMainForm = Array.from(mainForm.children);
 
-/*Массив элемнтов формы*/
-const getChildrenArrayForm = function (form) {
-  return Array.from(form.children);
-};
-
-/*Добавление неактивного состояния у элементов*/
-const addDisabledStateElements = function (elements) {
-  elements.forEach((elem) => elem.classList.add('disabled'));
-};
-
-/*Удаление неактивного состояния у элементов*/
-const removeDisabledStateElements = function (elements) {
-  elements.forEach((elem) => elem.classList.remove('disabled'));
-};
-
-/*Добавление неактивного состояния форме*/
-const addDisabledStateForm = function (form) {
-  form.classList.add('ad-form--disabled');
-};
-
-/*Удаление неактивного состояния у формы*/
-const removeDisabledStateForm = function (form) {
-  form.classList.remove('ad-form--disabled');
-};
-
-/*Добавление неактивного состояния странице*/
 const addDisabledStatePage = function () {
-  const adForm = getAdForm();
-  const mapFilter = getMapFiltersForm();
+  childrenMainForm.forEach((elem) => elem.classList.add('disabled'));
 
-  addDisabledStateForm(adForm);
-  addDisabledStateForm(mapFilter);
-
-  addDisabledStateElements(getChildrenArrayForm(adForm));
-  addDisabledStateElements(getChildrenArrayForm(mapFilter));
+  mainForm.classList.add('ad-form--disabled');
+  mainFilter.classList.add('ad-form--disabled');
 };
 
-/*Удаление неактивного состояния у страницы*/
 const removeDisabledStatePage = function () {
-  const adForm = getAdForm();
-  const mapFilter = getMapFiltersForm();
+  childrenMainForm.forEach((elem) => elem.classList.remove('disabled'));
 
-  removeDisabledStateForm(adForm);
-  removeDisabledStateForm(mapFilter);
-
-  removeDisabledStateElements(getChildrenArrayForm(adForm));
-  removeDisabledStateElements(getChildrenArrayForm(mapFilter));
+  mainForm.classList.remove('ad-form--disabled');
+  mainFilter.classList.remove('ad-form--disabled');
 };
 
 window.addEventListener('load', removeDisabledStatePage);
