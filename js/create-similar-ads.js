@@ -1,5 +1,3 @@
-import {similarAds} from './data.js';
-
 const typeOfHousing = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
@@ -46,7 +44,5 @@ const createSimilarAds = function (ads) {
   return adsFragment;
 };
 
-createSimilarAds(similarAds);
-
-export {createSimilarAds, similarAds};
+export {createSimilarAds};
 

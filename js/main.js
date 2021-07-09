@@ -1,7 +1,6 @@
-import './card.js';
-import './data.js';
-import {addDisabledStatePage} from './toggleStatePage.js';
-import {createSimilarAds, similarAds} from './card.js';
+import {addDisabledStatePage} from './toggle-state-page.js';
+import {similarAds} from './data.js';
+import {createSimilarAds} from './create-similar-ads.js';
 
 addDisabledStatePage();
 

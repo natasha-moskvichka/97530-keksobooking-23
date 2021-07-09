@@ -10,7 +10,7 @@ const addDisabledStatePage = function () {
   mainFilter.classList.add('ad-form--disabled');
 };
 
-/*ФУНКЦИЯ НАПИСАНА В СООТВЕТСТВИИ С ДЗ И БУДЕТ ИСПОЛЬЗОВАТЬСЯ, КОГДА ПОЯВИТСЯ С КАРТА*/
+/*ФУНКЦИЯ НАПИСАНА В СООТВЕТСТВИИ С ДЗ И БУДЕТ ИСПОЛЬЗОВАТЬСЯ, КОГДА ПОЯВИТСЯ КАРТА*/
 
 /*const removeDisabledStatePage = function () {
   childrenMainForm.forEach((elem) => elem.classList.remove('disabled'));
