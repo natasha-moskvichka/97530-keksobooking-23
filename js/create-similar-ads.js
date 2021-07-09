@@ -1,5 +1,3 @@
-import {similarAds} from './data.js';
-
 const typeOfHousing = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
@@ -10,8 +8,6 @@ const typeOfHousing = {
 
 const cardTemplate = document.querySelector('#card')
   .content.querySelector('.popup');
-
-const card = document.querySelector('.map__canvas');
 
 const generateFeature = function (elem, arr) {
   elem.innerHTML = '';
@@ -43,9 +39,10 @@ const createSimilarAds = function (ads) {
     adsElement.querySelector('.popup__avatar').src = ad.author.avatar;
 
     adsFragment.appendChild(adsElement);
-
-    card.appendChild(adsElement);
   });
+
+  return adsFragment;
 };
 
-createSimilarAds(similarAds);
+export {createSimilarAds};
+
