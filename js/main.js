@@ -1,11 +1,15 @@
-import {addDisabledStatePage} from './toggle-state-page.js';
+/*import {addDisabledStatePage} from './toggle-state-page.js';*/
 import {similarAds} from './data.js';
 import {createSimilarAds} from './create-similar-ads.js';
+import {onFormSubmit} from './validation-form.js';
 
-addDisabledStatePage();
+/*закомментировала для валидации формы*/
+/*addDisabledStatePage();*/
 
 const card = document.querySelector('.map__canvas');
 
 createSimilarAds(similarAds);
 card.appendChild(createSimilarAds(similarAds));
+
+onFormSubmit();
 
