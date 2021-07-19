@@ -12,7 +12,7 @@ const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/ke
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 
-const SIMILAR_AD_COUNT = 1;
+const SIMILAR_AD_COUNT = 10;
 
 const ADDRESS_LOCATION_X = 60;
 
@@ -49,6 +49,34 @@ const LocationY = {
 };
 
 const DIGIT = 5;
+
+const CENTER_TOKYO = {
+  lat: 35.67776,
+  lng: 139.76463,
+};
+
+const PinsOfMap = {
+  MAIN_ICON: {
+    iconUrl: 'img/main-pin.svg',
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+  },
+  GENERAL_ICON: {
+    iconUrl: 'img/pin.svg',
+    iconSize: [52, 52],
+    iconAnchor: [26, 52],
+  },
+};
+
+const priceTypeOfHousing = {
+  bungalow: 0,
+  flat: 1000,
+  hotel: 3000,
+  house: 5000,
+  palace: 10000,
+};
+
+const ROOM_COUNT = 100;
 
 // Функция, возвращает массив рандомной длины
 const getRandomArrayLength = function (arr, length) {
@@ -103,4 +131,4 @@ const createAd = function (result) {
 
 const similarAds = new Array(SIMILAR_AD_COUNT).fill(null).map((element, index) => createAd(index));
 
-export {similarAds};
+export {similarAds, CENTER_TOKYO, PinsOfMap, priceTypeOfHousing, ROOM_COUNT, SIMILAR_AD_COUNT};

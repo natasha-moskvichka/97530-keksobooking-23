@@ -39,9 +39,11 @@ const createSimilarAds = function (ads) {
     adsElement.querySelector('.popup__avatar').src = ad.author.avatar;
 
     adsFragment.appendChild(adsElement);
+
   });
 
   return adsFragment;
+
 };
 
 export {createSimilarAds};

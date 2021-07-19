@@ -1,15 +1,15 @@
-/*import {addDisabledStatePage} from './toggle-state-page.js';*/
-import {similarAds} from './data.js';
-import {createSimilarAds} from './create-similar-ads.js';
+import {CENTER_TOKYO} from './data.js';
+import {getActualPins, defaultPoints} from './add-pins-map.js';
 import {onFormSubmit} from './validation-form.js';
+import {similarAds} from './data.js';
 
-/*закомментировала для валидации формы*/
-/*addDisabledStatePage();*/
+getActualPins(similarAds);
+defaultPoints(CENTER_TOKYO);
 
-const card = document.querySelector('.map__canvas');
+//const card = document.querySelector('.map__canvas');
 
-createSimilarAds(similarAds);
-card.appendChild(createSimilarAds(similarAds));
+/*createSimilarAds(similarAds);
+card.appendChild(createSimilarAds(similarAds));*/
 
 onFormSubmit();
 
