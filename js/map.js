@@ -1,8 +1,8 @@
 import {removeDisabledStatePage} from './toggle-state-page.js';
+import {getData} from './backend.js';
+import {SIMILAR_AD_COUNT} from './data.js';
 
 const validationForm = document.querySelector('.ad-form');
-
-const reset = validationForm.querySelector('.ad-form__reset');
 
 const addressValueInput = validationForm.querySelector('#address');
 
@@ -14,24 +14,20 @@ const CenterTokyo = {
 };
 
 const mainPin = {
-  URL: 'img/main-pin.svg',
-  SIZE: [40, 40],
-  ANCHOR: [20, 40],
+  url: 'img/main-pin.svg',
+  size: [40, 40],
+  anchor: [20, 40],
 };
 
 const pins = {
-  URL: 'img/pin.svg',
-  SIZE: [52, 52],
-  ANCHOR: [26, 52],
-};
-
-const onMapLoad = function () {
-  removeDisabledStatePage();
+  url: 'img/pin.svg',
+  size: [52, 52],
+  anchor: [26, 52],
 };
 
 const map = L.map('card-canvas')
   .on('load', () => {
-    onMapLoad();
+    removeDisabledStatePage();
   })
   .setView({
     lat: CenterTokyo.LAT,
@@ -47,9 +43,9 @@ L.tileLayer(
 ).addTo(map);
 
 const mainPinIcon = L.icon({
-  iconUrl: mainPin.URL,
-  iconSize: mainPin.SIZE,
-  iconAnchor: mainPin.ANCHOR,
+  iconUrl: mainPin.url,
+  iconSize: mainPin.size,
+  iconAnchor: mainPin.anchor,
 });
 
 const mainPinMarker = L.marker(
@@ -70,17 +66,17 @@ mainPinMarker.on('move', (evt) => {
 });
 
 const pinIcon = L.icon({
-  iconUrl: pins.URL,
-  iconSize: pins.SIZE,
-  iconAnchor: pins.ANCHOR,
+  iconUrl: pins.url,
+  iconSize: pins.size,
+  iconAnchor: pins.anchor,
 });
 
 const addPinsMarker = function (ads) {
   ads.forEach((item) => {
     const pinMarker = L.marker(
       {
-        lat: item.location.LAT,
-        lng: item.location.LNG,
+        lat: item.location.lat,
+        lng: item.location.lng,
       }, {
         icon: pinIcon,
       });
@@ -98,7 +94,15 @@ const setMainPin = function () {
     lat: CenterTokyo.LAT,
     lng: CenterTokyo.LNG,
   }, ZOOM_MAP);
-
 };
 
-export {setMainPin, onMapLoad, CenterTokyo, validationForm, addPinsMarker, map, reset};
+getData((adverts) => {
+  addPinsMarker(adverts.slice(0, SIMILAR_AD_COUNT));
+});
+
+function loadMap () {
+  removeDisabledStatePage();
+  setMainPin(CenterTokyo);
+}
+
+export {setMainPin, loadMap, CenterTokyo};

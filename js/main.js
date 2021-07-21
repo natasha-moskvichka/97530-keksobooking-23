@@ -1,20 +1,15 @@
-import {setMainPin, CenterTokyo, onMapLoad, addPinsMarker, reset} from './map.js';
-import {onFormSubmit, validationForm, submit} from './validation-form.js';
-import {similarAds, SIMILAR_AD_COUNT} from './data.js';
 import {addDisabledStatePage} from './toggle-state-page.js';
+import {onFormSubmit, validationForm, submit, setUserFormSubmit} from './validation-form.js';
+import {loadMap, setMainPin, CenterTokyo} from './map.js';
+const reset = validationForm.querySelector('.ad-form__reset');
 
 addDisabledStatePage();
 
-onMapLoad();
-
-const getDataPins = function (adverts) {
-  addPinsMarker(adverts.slice(0, SIMILAR_AD_COUNT));
-};
-
-getDataPins(similarAds);
+loadMap();
 
 submit.addEventListener('click', () => {
   onFormSubmit();
+  setUserFormSubmit();
 });
 
 reset.addEventListener('click', (evt) => {
@@ -22,12 +17,4 @@ reset.addEventListener('click', (evt) => {
   validationForm.reset();
   setMainPin(CenterTokyo);
 });
-
-setMainPin(CenterTokyo);
-
-//const card = document.querySelector('.map__canvas');
-
-/*createSimilarAds(similarAds);
-card.appendChild(createSimilarAds(similarAds));*/
-
 

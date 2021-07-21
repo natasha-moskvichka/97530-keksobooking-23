@@ -12,10 +12,12 @@ const cardTemplate = document.querySelector('#card')
 const generateFeature = function (elem, arr) {
   elem.innerHTML = '';
 
-  for (const item of arr) {
-    const itemFeature = document.createElement('li');
-    itemFeature.classList.add('popup__feature', `popup__feature--${item}`);
-    elem.appendChild(itemFeature);
+  if (arr) {
+    arr.forEach((item) => {
+      const itemFeature = document.createElement('li');
+      itemFeature.classList.add('popup__feature', `popup__feature--${item}`);
+      elem.appendChild(itemFeature);
+    });
   }
 };
 
