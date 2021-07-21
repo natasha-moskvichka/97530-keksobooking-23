@@ -12,7 +12,7 @@ const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/ke
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 
-const SIMILAR_AD_COUNT = 1;
+const SIMILAR_AD_COUNT = 10;
 
 const ADDRESS_LOCATION_X = 60;
 
@@ -49,6 +49,16 @@ const LocationY = {
 };
 
 const DIGIT = 5;
+
+const priceTypeOfHousing = {
+  bungalow: 0,
+  flat: 1000,
+  hotel: 3000,
+  house: 5000,
+  palace: 10000,
+};
+
+const ROOM_COUNT = 100;
 
 // Функция, возвращает массив рандомной длины
 const getRandomArrayLength = function (arr, length) {
@@ -95,12 +105,12 @@ const createAd = function (result) {
       photos: getRandomArrayElement(PHOTOS),
     },
     location: {
-      lat: getRandomPositiveFloat(LocationX.LAT_X_MIN, LocationX.LAT_X_MAX, DIGIT),
-      lng: getRandomPositiveFloat(LocationY.LNG_Y_MIN, LocationY.LNG_Y_MAX, DIGIT),
+      LAT: getRandomPositiveFloat(LocationX.LAT_X_MIN, LocationX.LAT_X_MAX, DIGIT),
+      LNG: getRandomPositiveFloat(LocationY.LNG_Y_MIN, LocationY.LNG_Y_MAX, DIGIT),
     },
   };
 };
 
 const similarAds = new Array(SIMILAR_AD_COUNT).fill(null).map((element, index) => createAd(index));
 
-export {similarAds};
+export {similarAds, priceTypeOfHousing, ROOM_COUNT, SIMILAR_AD_COUNT};

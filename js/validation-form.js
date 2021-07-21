@@ -1,4 +1,5 @@
-import {showErrorMessage, showSuccessMessage} from './notifications.js';
+import {showSuccessMessage} from './notifications.js';
+import {priceTypeOfHousing, ROOM_COUNT} from './data.js';
 
 const validationForm = document.querySelector('.ad-form');
 
@@ -15,20 +16,6 @@ const priceOfHousing = validationForm.querySelector('#price');
 const timeIn = validationForm.querySelector('#timein');
 
 const timeOut = validationForm.querySelector('#timeout');
-
-const formReset = validationForm.querySelector('.ad-form__reset');
-
-const formFields = validationForm.querySelectorAll('fieldset > input, select');
-
-const priceTypeOfHousing = {
-  bungalow: 0,
-  flat: 1000,
-  hotel: 3000,
-  house: 5000,
-  palace: 10000,
-};
-
-const ROOM_COUNT = 100;
 
 const verifyCapacity = function () {
   const roomChecked = parseInt(roomNumber.value, 10);
@@ -81,45 +68,15 @@ timeOut.addEventListener('change', selectTimeChange);
 
 timeIn.addEventListener('change', selectTimeChange);
 
-const markedValidFields = function () {
-  formFields.forEach((field) => {
-    if (!field.validity.valid) {
-      field.classList.add('field-invalid');
-    }
-  });
-};
-
 const onFormSubmit = function () {
   verifyCapacity();
-  //markedValidFields();
-  showErrorMessage();
-  showSuccessMessage();
 };
 
 validationForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
+  showSuccessMessage();
 });
 
-submit.addEventListener('click', () => {
-  onFormSubmit();
-  markedValidFields();
-});
-
-const unMarkedValidFields = function (field) {
-  const hasFieldClass = field.classList.contains('field-invalid');
-  if (hasFieldClass) {
-    field.classList.remove('field-invalid');
-  }
-};
-
-const onResetForm = function () {
-  formFields.forEach((field) => {
-    unMarkedValidFields(field);
-  });
-};
-
-formReset.addEventListener('click', onResetForm);
-
-export {onFormSubmit};
+export {onFormSubmit, validationForm, submit};
 
 
