@@ -1,5 +1,6 @@
 import {removeDisabledStatePage} from './toggle-state-page.js';
-import {SIMILAR_AD_COUNT, similarAds} from './data.js';
+import {getData} from './backend.js';
+import {SIMILAR_AD_COUNT} from './data.js';
 
 const validationForm = document.querySelector('.ad-form');
 
@@ -74,8 +75,8 @@ const addPinsMarker = function (ads) {
   ads.forEach((item) => {
     const pinMarker = L.marker(
       {
-        lat: item.location.LAT,
-        lng: item.location.LNG,
+        lat: item.location.lat,
+        lng: item.location.lng,
       }, {
         icon: pinIcon,
       });
@@ -95,14 +96,13 @@ const setMainPin = function () {
   }, ZOOM_MAP);
 };
 
-const getDataPins = function (adverts) {
+getData((adverts) => {
   addPinsMarker(adverts.slice(0, SIMILAR_AD_COUNT));
-};
+});
 
 function loadMap () {
   removeDisabledStatePage();
-  getDataPins(similarAds);
   setMainPin(CenterTokyo);
 }
 
-export {setMainPin, loadMap, CenterTokyo, getDataPins};
+export {setMainPin, loadMap, CenterTokyo};

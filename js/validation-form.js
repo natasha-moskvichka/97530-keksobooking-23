@@ -18,7 +18,7 @@ const timeIn = validationForm.querySelector('#timein');
 
 const timeOut = validationForm.querySelector('#timeout');
 
-const verifyCapacity = function () {
+const onSelectChange = function () {
   const roomChecked = parseInt(roomNumber.value, 10);
   const capacityChecked = parseInt(capacity.value, 10);
 
@@ -36,9 +36,9 @@ const verifyCapacity = function () {
 
 };
 
-capacity.addEventListener('change', verifyCapacity);
+capacity.addEventListener('change', onSelectChange);
 
-roomNumber.addEventListener('change', verifyCapacity);
+roomNumber.addEventListener('change', onSelectChange);
 
 /*тип жилья*/
 
@@ -47,11 +47,11 @@ const changeTypeOfHousing = function (typeOfHousing) {
   priceOfHousing.placeholder = priceOfHousing.price;
 };
 
-const setHousing = function () {
+const onSelectHousingChange = function () {
   changeTypeOfHousing(typeOfHouses.value);
 };
 
-typeOfHouses.addEventListener('change', setHousing);
+typeOfHouses.addEventListener('change', onSelectHousingChange);
 
 /*время*/
 
@@ -60,17 +60,17 @@ const changeTime = function (newSelectTime) {
   timeOut.value = newSelectTime.value;
 };
 
-const selectTimeChange = function (evt) {
+const onSelectTimeOutChange = function (evt) {
   const newSelectTime = evt.target;
   changeTime(newSelectTime);
 };
 
-timeOut.addEventListener('change', selectTimeChange);
+timeOut.addEventListener('change', onSelectTimeOutChange);
 
-timeIn.addEventListener('change', selectTimeChange);
+timeIn.addEventListener('change', onSelectTimeOutChange);
 
 const onFormSubmit = function () {
-  verifyCapacity();
+  onSelectChange();
 };
 
 const setUserFormSubmit = (onSuccess) => {

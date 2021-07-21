@@ -1,14 +1,16 @@
+const GET_URL = 'https://23.javascript.pages.academy/keksobooking/data';
+const POST_URL = 'https://23.javascript.pages.academy/keksobooking';
+
 const getData = (onSuccess) => {
-  fetch('https://23.javascript.pages.academy/keksobooking/data')
+  fetch(GET_URL)
     .then((response) => response.json())
-    .then((similarAds) => {
-      onSuccess(similarAds);
+    .then((data) => {
+      onSuccess(data);
     });
 };
 
 const sendData = (onSuccess, onFail, body) => {
-  fetch(
-    'https://23.javascript.pages.academy/keksobooking',
+  fetch(POST_URL,
     {
       method: 'POST',
       body,
@@ -26,5 +28,5 @@ const sendData = (onSuccess, onFail, body) => {
     });
 };
 
-export {getData, sendData};
+export {getData, sendData, GET_URL};
 
