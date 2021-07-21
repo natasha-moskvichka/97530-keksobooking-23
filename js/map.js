@@ -100,8 +100,9 @@ const getDataPins = function (adverts) {
 };
 
 function loadMap () {
+  removeDisabledStatePage();
   getDataPins(similarAds);
   setMainPin(CenterTokyo);
 }
 
-export {setMainPin, loadMap, CenterTokyo};
+export {setMainPin, loadMap, CenterTokyo, getDataPins};

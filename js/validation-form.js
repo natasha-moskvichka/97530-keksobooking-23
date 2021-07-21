@@ -1,5 +1,6 @@
-import {showSuccessMessage} from './notifications.js';
+import {showSuccessMessage, showAlert} from './notifications.js';
 import {priceTypeOfHousing, ROOM_COUNT} from './data.js';
+import {sendData} from './backend.js';
 
 const validationForm = document.querySelector('.ad-form');
 
@@ -72,11 +73,19 @@ const onFormSubmit = function () {
   verifyCapacity();
 };
 
-validationForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  showSuccessMessage();
-});
+const setUserFormSubmit = (onSuccess) => {
+  validationForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    showSuccessMessage();
 
-export {onFormSubmit, validationForm, submit};
+    sendData(
+      () => onSuccess(),
+      () => showAlert('Не удалось отправить форму. Попробуйте ещё раз'),
+      new FormData(evt.target),
+    );
+  });
+};
+
+export {onFormSubmit, validationForm, submit, setUserFormSubmit};
 
 

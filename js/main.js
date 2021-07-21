@@ -1,6 +1,10 @@
 import {addDisabledStatePage} from './toggle-state-page.js';
-import {onFormSubmit, validationForm, submit} from './validation-form.js';
+import {onFormSubmit, validationForm, submit, setUserFormSubmit} from './validation-form.js';
 import {loadMap, setMainPin, CenterTokyo} from './map.js';
+import './map.js';
+import {getData} from './backend.js';
+import {createSimilarAds} from './create-similar-ads.js';
+import {SIMILAR_AD_COUNT} from './data.js';
 
 const reset = validationForm.querySelector('.ad-form__reset');
 
@@ -18,9 +22,8 @@ reset.addEventListener('click', (evt) => {
   setMainPin(CenterTokyo);
 });
 
-//const card = document.querySelector('.map__canvas');
+getData((similarAds) => {
+  createSimilarAds(similarAds.slice(0, SIMILAR_AD_COUNT));
+});
 
-/*createSimilarAds(similarAds);
-card.appendChild(createSimilarAds(similarAds));*/
-
-
+setUserFormSubmit();
