@@ -77,10 +77,6 @@ validationForm.addEventListener('submit', (evt) => {
   showSuccessMessage();
 });
 
-submit.addEventListener('click', () => {
-  onFormSubmit();
-});
-
-export {onFormSubmit};
+export {onFormSubmit, validationForm, submit};
 
 
