@@ -2,7 +2,7 @@ import {removeDisabledStatePage} from './toggle-state-page.js';
 
 const validationForm = document.querySelector('.ad-form');
 
-const buttonReset = validationForm.querySelector('.ad-form__reset');
+const reset = validationForm.querySelector('.ad-form__reset');
 
 const addressValueInput = validationForm.querySelector('#address');
 
@@ -101,4 +101,4 @@ const setMainPin = function () {
 
 };
 
-export {setMainPin, onMapLoad, CenterTokyo, validationForm, addPinsMarker, map, buttonReset};
+export {setMainPin, onMapLoad, CenterTokyo, validationForm, addPinsMarker, map, reset};

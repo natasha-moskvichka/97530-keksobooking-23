@@ -1,4 +1,4 @@
-import {setMainPin, CenterTokyo, onMapLoad, addPinsMarker, buttonReset} from './map.js';
+import {setMainPin, CenterTokyo, onMapLoad, addPinsMarker, reset} from './map.js';
 import {onFormSubmit, validationForm, submit} from './validation-form.js';
 import {similarAds, SIMILAR_AD_COUNT} from './data.js';
 import {addDisabledStatePage} from './toggle-state-page.js';
@@ -17,7 +17,7 @@ submit.addEventListener('click', () => {
   onFormSubmit();
 });
 
-buttonReset.addEventListener('click', (evt) => {
+reset.addEventListener('click', (evt) => {
   evt.preventDefault();
   validationForm.reset();
   setMainPin(CenterTokyo);
